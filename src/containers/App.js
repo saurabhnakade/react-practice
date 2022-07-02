@@ -28,6 +28,20 @@ class App extends Component {
     console.log('App.js component did mount')
   }
 
+  shouldComponentUpdate(nextProps,nextState){
+    console.log("App.js should component update");
+    return true
+  }
+
+  getSnapshotBeforeUpdate(){
+    console.log("App.js get snapshot before update")
+    return null
+  }
+  
+  componentDidUpdate(){
+    console.log("App.js component did update");
+  }
+
   buttonHandler = (newName) => {
     this.setState({
       persons: [
