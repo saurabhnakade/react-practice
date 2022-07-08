@@ -11,12 +11,13 @@ class App extends Component {
 
   state = {
     persons: [
-      { id:'hbrd',name: "Max", age: 28 },
+      { id:'hbrd',name: "Max", age: '28' },
       { id:'urcn',name: "Manu", age: 25 },
       { id:'osld',name: "Maithili", age: 20 },
     ],
     otherState: "otherValue",
     showPersons: false,
+    changeCounter:0
   };
 
   static getDerivedStateFromProps(props,state){
@@ -65,8 +66,11 @@ class App extends Component {
     const personsArray=[...this.state.persons];
     personsArray[personIdx]=person;
 
-    this.setState({
-      persons: personsArray,
+    this.setState((prevState,props)=>{
+      return {
+        persons: personsArray,
+        changeCounter: prevState.changeCounter + 1,
+      };
     });
   };
 
