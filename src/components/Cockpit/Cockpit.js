@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import classes from './Cockpit.css'
+import AuthContext from "../../context/auth-context"
 
 const Cockpit = (props) => {
   useEffect(()=>{
@@ -27,6 +28,12 @@ const Cockpit = (props) => {
       <button className={btnClass.join(" ")} onClick={props.clicked}>
         Click Me
       </button>
+
+      <AuthContext.Consumer>
+        {(context)=>
+          <button onClick={context.login}>Login</button>
+        }
+      </AuthContext.Consumer>
 
       <h1>Hi, I'm a React app</h1>
       <p className={assignedClasses.join(" ")}>This is working great !</p>
