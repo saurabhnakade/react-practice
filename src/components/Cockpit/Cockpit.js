@@ -1,8 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useContext } from "react";
 import classes from './Cockpit.css'
 import AuthContext from "../../context/auth-context"
 
 const Cockpit = (props) => {
+  const authContext=useContext(AuthContext);
+  console.log(authContext.authenticated);
+
   useEffect(()=>{
     console.log('Cockpit.js useEffect')
     // HTTP request .....
@@ -29,11 +32,12 @@ const Cockpit = (props) => {
         Click Me
       </button>
 
+      {/* 
       <AuthContext.Consumer>
-        {(context)=>
-          <button onClick={context.login}>Login</button>
-        }
-      </AuthContext.Consumer>
+        {(context)=> */}
+          <button onClick={authContext.login}>Login</button>
+        {/* }
+      </AuthContext.Consumer> */}
 
       <h1>Hi, I'm a React app</h1>
       <p className={assignedClasses.join(" ")}>This is working great !</p>
